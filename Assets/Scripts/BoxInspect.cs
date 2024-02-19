@@ -8,6 +8,7 @@ public class BoxInspect : Interactable
     //Bools
     private bool canInspect;
     private bool canvasOpen;
+    public bool boxUnlocked;
 
 
     [Header("Inspect")]
@@ -21,6 +22,9 @@ public class BoxInspect : Interactable
     private GameObject inspectControls;
     [SerializeField]
     private GameObject lookAtText;
+    [SerializeField]
+    private GameObject findWayBox;
+
 
 
 
@@ -41,6 +45,13 @@ public class BoxInspect : Interactable
     [SerializeField] Collider lockTrigger;
     [SerializeField] private Inventory_script inventoryScript;
 
+    [Header("Open")]
+    [SerializeField] private AudioClip openedSound;
+    [SerializeField] private AudioClip lockedSound;
+    [SerializeField] private Animator openAnimation;
+    [SerializeField] private Collider boxCollider; 
+
+
     private bool lookingAtCamera;
     private bool lookingAtLock;
 
@@ -50,17 +61,21 @@ public class BoxInspect : Interactable
     {
         canvasOpen = false;
         canInspect = false;
+        boxUnlocked = false;
         inspectObject.SetActive(false);
         inspectPostProcess.SetActive(false);
         inspectControls.SetActive(false);
         lookAtText.SetActive(false);
+        findWayBox.SetActive(false);
+        
         //LockScript
         lookingAtLock = false;
         lockCamera.SetActive(false);
         inspectText.SetActive(false);
 
 
-       
+
+
     }
 
 
@@ -71,6 +86,7 @@ public class BoxInspect : Interactable
         canInspect = true;
         lookAtText.SetActive(true);
         StartCoroutine(CheckForInput());
+        findWayBox.SetActive(true);
 
         //LockScript
 
@@ -94,9 +110,17 @@ public class BoxInspect : Interactable
 
     public override void OnInteract()
     {
-        
+        if(!boxUnlocked) 
+        {
+            playerAudioSource.PlayOneShot(lockedSound);
+        }
 
-
+        else if(boxUnlocked) 
+        {
+            boxCollider.enabled = false;
+            playerAudioSource.PlayOneShot(openedSound);
+            openAnimation.SetTrigger("OpenBox");
+        }
     }
 
    

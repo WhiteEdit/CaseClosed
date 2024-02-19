@@ -19,7 +19,6 @@ public class BoxLock : MonoBehaviour
 
     [SerializeField] private AudioSource playerAudioSource;
     [SerializeField] private AudioClip padlockOpen;
-    [SerializeField] private Animator doorAnimation;
 
     [Header("UI")]
     [SerializeField] private GameObject textDestroy;
@@ -33,9 +32,18 @@ public class BoxLock : MonoBehaviour
     [Header("ZoomElements")]
     [SerializeField] private GameObject playerCamera;
     [SerializeField] private GameObject lockCamera;
-    [SerializeField] private GameObject lockTrigger;
     [SerializeField] FirstPersonControler firstPersonControler;
     [SerializeField] Inventory_script inventoryScript;
+
+    [Header("Rotate")]
+    [SerializeField] private Rotate rotate1;
+    [SerializeField] private Rotate rotate2;
+    [SerializeField] private Rotate rotate3;
+
+    [Header("Trigger")]
+    [SerializeField] private Collider trigger;
+
+    public BoxInspect boxInspect;
 
 
 
@@ -55,24 +63,27 @@ public class BoxLock : MonoBehaviour
            
             if ((correctNumber1 == wheel1.numberShown) && (correctNumber2 == wheel2.numberShown) && (correctNumber3 == wheel3.numberShown)) 
             {
-                Debug.Log("Opened");
+                
                 playerAudioSource.PlayOneShot(padlockOpen);
-                doorAnimation.SetTrigger("DoorOpen");
               
 
                 yield return new WaitForSeconds(waitTime);
 
+                boxInspect.boxUnlocked=true;
                 notebookUpdated.SetActive(true);
+                trigger.enabled=true;
                 Debug.Log("UI Changed");
                 Destroy(textDestroy);
                 textShow.SetActive(true);
                 playerAudioSource.PlayOneShot(writingAudio);
+                rotate1.enabled = false;
+                rotate2.enabled = false;
+                rotate3.enabled = false;
 
-            
+
                 playerCamera.SetActive(true);
                 lockCamera.SetActive(false);
                 Destroy(lockCamera);
-                Destroy(lockTrigger);
                 crosshair.SetActive(true);
                 firstPersonControler.enabled = true;
                 inventoryScript.enabled = true;
@@ -92,14 +103,6 @@ public class BoxLock : MonoBehaviour
 
     }
 
-    void ShowUI()
-    {
-        Debug.Log("UI Changed");
-        Destroy(textDestroy); 
-        textShow.SetActive(true);
-        playerAudioSource.PlayOneShot(writingAudio);
-        
-    }
 
 
 }
