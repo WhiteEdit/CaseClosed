@@ -6,11 +6,13 @@ public class BoolHandler : MonoBehaviour
 {
     public bool musicIsPlaying;
     public bool hasSafeKey;
+    public bool hasDoorKey;
 
 
     private void Start()
     {
         hasSafeKey = false;
+        hasDoorKey = false;
     }
 
     private void boolCheck()
