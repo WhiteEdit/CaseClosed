@@ -28,7 +28,7 @@ public class DoorKeyInspect : Interactable
 
     [Header("Extra")]
     [SerializeField]
-    private GameObject safeKey;
+    private MeshRenderer safeKey;
     [SerializeField]
     private GameObject keyInventory;
     [SerializeField]
@@ -82,9 +82,9 @@ public class DoorKeyInspect : Interactable
 
     public override void OnInteract()
     {
-        Destroy(safeKey);
-        lookAtText.SetActive(false);
         boolHandler.hasDoorKey = true;
+        safeKey.enabled = false;
+        lookAtText.SetActive(false);
         keyInventory.SetActive(true);
         noteBookUpdate.SetActive(true);
         playerAudioSource.PlayOneShot(updateSound);

@@ -58,8 +58,9 @@ public class BoxLock : MonoBehaviour
 
     private IEnumerator CheckNumbersCoroutine()
     {
-        while (true)
-        {
+        
+           while (true) 
+        { 
            
             if ((correctNumber1 == wheel1.numberShown) && (correctNumber2 == wheel2.numberShown) && (correctNumber3 == wheel3.numberShown)) 
             {
@@ -97,7 +98,6 @@ public class BoxLock : MonoBehaviour
                 Destroy(this);
                 yield break;
             }
-
             yield return null;
         }
 

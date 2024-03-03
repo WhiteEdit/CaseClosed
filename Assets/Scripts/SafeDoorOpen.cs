@@ -14,6 +14,11 @@ public class SafeDoorOpen : Interactable
     private GameObject uiElements;
     [SerializeField]
     private AudioClip doorOpenSound;
+    [SerializeField]
+    private GameObject removeKey;
+    [SerializeField]
+    private GameObject scratchedKey;
+
 
 
     [Header("VoiceOver")]
@@ -43,6 +48,8 @@ public class SafeDoorOpen : Interactable
             doorAnimtion.SetTrigger("DoorOpen");
             uiElements.SetActive(false);
             safeKey.SetActive(true);
+            removeKey.SetActive(false);
+            scratchedKey.SetActive(true);
             Destroy(this); 
 
         }

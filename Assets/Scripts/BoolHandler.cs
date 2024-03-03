@@ -7,12 +7,14 @@ public class BoolHandler : MonoBehaviour
     public bool musicIsPlaying;
     public bool hasSafeKey;
     public bool hasDoorKey;
+    public bool hasCrowbar;
 
 
     private void Start()
     {
         hasSafeKey = false;
         hasDoorKey = false;
+        hasCrowbar = false;
     }
 
     private void boolCheck()

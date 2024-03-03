@@ -28,7 +28,7 @@ public class SafeKeyInspect : Interactable
 
     [Header("Extra")]
     [SerializeField]
-    private GameObject safeKey;
+    private MeshRenderer safeKey;
     [SerializeField]
     private GameObject keyInventory;
     [SerializeField]
@@ -82,7 +82,7 @@ public class SafeKeyInspect : Interactable
 
     public override void OnInteract()
     {
-        Destroy(safeKey);
+        safeKey.enabled = false;
         lookAtText.SetActive(false);
         boolHandler.hasSafeKey = true;
         keyInventory.SetActive(true);
