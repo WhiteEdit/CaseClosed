@@ -793,6 +793,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 253199884}
     m_Modifications:
+    - target: {fileID: -9003383592434637581, guid: 33b918d5591d0f2409305f3088019fdb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d61fbcd4aad42d445b8a80d96034e100, type: 2}
     - target: {fileID: -8679921383154817045, guid: 33b918d5591d0f2409305f3088019fdb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14211,7 +14216,7 @@ MonoBehaviour:
   updateSound: {fileID: 8300000, guid: 6e701586117ea8a48ae694467d8b40b4, type: 3}
   playerAudioSource: {fileID: 1614962370}
   voiceOverArray:
-  - {fileID: 8300000, guid: 6ec321d0fc208c747bca8d72ab2cfef8, type: 3}
+  - {fileID: 8300000, guid: 7a5ae35798b92854597fc1ec18f181c5, type: 3}
   firstPersonControler: {fileID: 1614962367}
 --- !u!65 &8662687379073333132
 BoxCollider:
