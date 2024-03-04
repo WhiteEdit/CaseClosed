@@ -14,18 +14,21 @@ public class HatchOpenScript : Interactable
     public BoolHandler boolHandler;
     [SerializeField] private GameObject destroyInventory;
     [SerializeField] private GameObject scratchInventory;
-    
+    [SerializeField] private AudioClip doorOpen;
+    [SerializeField] private AudioSource audSource;
+    [SerializeField] private GameObject uiElements;
+
 
 
 
 
     public override void OnFocus()
     {
-
+        uiElements.SetActive(true);
     }
     public override void OnLoseFocus()
     {
-
+        uiElements.SetActive(false);
     }
 
 
@@ -45,6 +48,7 @@ public class HatchOpenScript : Interactable
     IEnumerator RotateObject()
     {
         isRotating = true;
+        audSource.PlayOneShot(doorOpen);
 
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation;

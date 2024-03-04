@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BoxInspect : Interactable
@@ -49,16 +50,24 @@ public class BoxInspect : Interactable
     [SerializeField] private AudioClip openedSound;
     [SerializeField] private AudioClip lockedSound;
     [SerializeField] private Animator openAnimation;
-    [SerializeField] private Collider boxCollider; 
+    [SerializeField] private Collider boxCollider;
+
+    [Header("UI")]
+    [SerializeField] private AudioClip writingSound;
+    [SerializeField] private GameObject noteUpd;
+
+
 
 
     private bool lookingAtCamera;
     private bool lookingAtLock;
+    private bool firstTime;
 
 
 
     void Start()
     {
+        firstTime = true;
         canvasOpen = false;
         canInspect = false;
         boxUnlocked = false;
@@ -67,6 +76,7 @@ public class BoxInspect : Interactable
         inspectControls.SetActive(false);
         lookAtText.SetActive(false);
         findWayBox.SetActive(false);
+
         
         //LockScript
         lookingAtLock = false;
@@ -83,16 +93,51 @@ public class BoxInspect : Interactable
 
     public override void OnFocus()
     {
-        canInspect = true;
-        lookAtText.SetActive(true);
-        StartCoroutine(CheckForInput());
-        findWayBox.SetActive(true);
+        if (firstTime)
+        {
+            canInspect = true;
+            lookAtText.SetActive(true);
+            StartCoroutine(CheckForInput());
+            findWayBox.SetActive(true);
+            playerAudioSource.PlayOneShot(writingSound);
+            firstTime = false;
+            StartCoroutine(NoteUpdate());
 
-        //LockScript
 
-        lookingAtLock = true;
-        inspectText.SetActive(true);
-        StartCoroutine(LookAtLock());
+            //LockScript
+
+            lookingAtLock = true;
+            inspectText.SetActive(true);
+            StartCoroutine(LookAtLock());
+            
+
+        }
+        else if (!firstTime) 
+        {
+            canInspect = true;
+            lookAtText.SetActive(true);
+            StartCoroutine(CheckForInput());
+            
+
+
+            //LockScript
+
+            lookingAtLock = true;
+            inspectText.SetActive(true);
+            StartCoroutine(LookAtLock());
+        }
+       
+
+    }
+
+    private IEnumerator NoteUpdate()
+    {
+
+        noteUpd.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        noteUpd.SetActive(false);
+        yield break;
+
 
     }
     public override void OnLoseFocus()

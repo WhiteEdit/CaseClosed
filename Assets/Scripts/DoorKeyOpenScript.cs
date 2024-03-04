@@ -14,18 +14,22 @@ public class DoorKeyOpenScrit : Interactable
     public BoolHandler boolHandler;
     [SerializeField] private GameObject destroyInventory;
     [SerializeField] private GameObject scratchInventory;
-    
+    [SerializeField] private AudioClip doorOpen;
+    [SerializeField] private AudioSource audSource;
+    [SerializeField] private GameObject uiElements;
+    [SerializeField] private AudioClip lockedSound;
+
 
 
 
 
     public override void OnFocus()
     {
-
+        uiElements.SetActive(true);
     }
     public override void OnLoseFocus()
     {
-
+        uiElements.SetActive(false);
     }
 
 
@@ -37,7 +41,10 @@ public class DoorKeyOpenScrit : Interactable
             destroyInventory.SetActive(false);
             scratchInventory.SetActive(true);
         }
-       
+        else
+        {
+            audSource.PlayOneShot(lockedSound);
+        }
 
    }
 
@@ -45,6 +52,7 @@ public class DoorKeyOpenScrit : Interactable
     IEnumerator RotateObject()
     {
         isRotating = true;
+        audSource.PlayOneShot(doorOpen);
 
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation;
@@ -52,6 +60,7 @@ public class DoorKeyOpenScrit : Interactable
         // Determine end rotation based on current rotation direction
         if (rotateClockwise)
             endRotation = transform.rotation * Quaternion.Euler(rotationAxis * rotationAmount);
+       
         else
             endRotation = transform.rotation * Quaternion.Euler(rotationAxis * -rotationAmount);
 

@@ -13,17 +13,32 @@ public class EnemyScript : MonoBehaviour
 
 
 
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+
+
     private void OnTriggerEnter(Collider other)
     {
         enemyAnimation.SetTrigger("EnemyIsTriggered");
-        StartCoroutine(Wait());
+        playerAudio.PlayOneShot(enemyScream);
+        StartCoroutine(EnemyWait());
     }
 
-    private IEnumerator Wait()
+    private IEnumerator EnemyWait()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
+        enemyFace.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        QuitGame();
 
-        // Add your actions after the delay here
+     
     }
 }
 
