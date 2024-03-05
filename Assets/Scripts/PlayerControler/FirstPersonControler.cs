@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class FirstPersonControler : MonoBehaviour
@@ -9,8 +10,9 @@ public class FirstPersonControler : MonoBehaviour
     [Header("Functional Options")]
     [SerializeField] private bool canInteract = true;
     [SerializeField] private  bool canZoom = true;
-  
-    
+    [SerializeField] private bool useFootsteps = true;
+
+
     [Header("Controls")] //Adds a header in the inspector for a easier navigation and to keep things organized
     [SerializeField] private KeyCode interactKey = KeyCode.E;
     [SerializeField] private KeyCode zoomKey = KeyCode.Mouse1; 
@@ -48,11 +50,21 @@ private Interactable currentInteractable; //refernece to object that is currentl
   [SerializeField] private float ZoomFov =  30f; //field of view for the zoom, defines how much the camera zooms in or out
   private float defaultFOV; 
   private Coroutine zoomRoutine;
-  
-  
 
-    
-private void HandleInteractionCheck()
+    [Header("Footsteps")]
+    [SerializeField] private float baseStepSpeed = 0.5f;
+    [SerializeField] private AudioSource footstepAudioSource = default;
+    [SerializeField] private AudioClip[] woodClips = default;
+    [SerializeField] private AudioClip[] carpetClips = default;
+    [SerializeField] private AudioClip[] concreteClips = default;
+    private float footstepTimer = 0;
+
+
+
+
+
+
+    private void HandleInteractionCheck()
 {
     if(Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance ) && hit.collider.gameObject.layer == 20)
     {
@@ -107,6 +119,9 @@ private void HandleInteractionInput()
 
             if (canZoom)
             HandleZoom();
+
+            if (useFootsteps)
+                Handle_Footsteps();
 
         }
     }
@@ -166,6 +181,39 @@ private void HandleInteractionInput()
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
+
+    private void Handle_Footsteps() 
+    {
+        if (!characterController.isGrounded) return;
+        if (currentInput == Vector2.zero) return;
+
+        footstepTimer -= Time.deltaTime;
+        
+        if (footstepTimer <= 0)
+        { if(Physics.Raycast(characterController.transform.position, Vector3.down, out RaycastHit hit, 3))
+            { 
+                switch(hit.collider.tag) 
+                {
+                       case "Wood":
+                        footstepAudioSource.PlayOneShot(woodClips[Random.Range(0, woodClips.Length-1)]);
+                        break;
+                       case "Carpet":
+                        footstepAudioSource.PlayOneShot(carpetClips[Random.Range(0, carpetClips.Length - 1)]);
+                        break;
+                       case "Concrete":
+                        footstepAudioSource.PlayOneShot(concreteClips[Random.Range(0, concreteClips.Length - 1)]);
+                        break;
+                    default:
+                        footstepAudioSource.PlayOneShot(woodClips[Random.Range(0, woodClips.Length - 1)]);
+                        break;
+                } 
+
+            }
+            footstepTimer = baseStepSpeed;
+        }
+       
+    }
+
     private IEnumerator ToggleZoom(bool isEnter)
     {
         float targetFOV = isEnter ? ZoomFov:  defaultFOV;
@@ -185,4 +233,5 @@ private void HandleInteractionInput()
 
 
     }
+    
 }

@@ -7301,6 +7301,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: couch_table_LP
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f41dbe94b5f22134cb76d93e37938eb0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 1805584289599947876, guid: f41dbe94b5f22134cb76d93e37938eb0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
     - target: {fileID: 4185088716145449139, guid: f41dbe94b5f22134cb76d93e37938eb0,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7309,8 +7319,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1805584289599947876, guid: f41dbe94b5f22134cb76d93e37938eb0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 757959170}
   m_SourcePrefab: {fileID: 100100000, guid: f41dbe94b5f22134cb76d93e37938eb0, type: 3}
+--- !u!1 &757959169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1805584289599947876, guid: f41dbe94b5f22134cb76d93e37938eb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 757959168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &757959170
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757959169}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8476943423588898933, guid: f41dbe94b5f22134cb76d93e37938eb0, type: 3}
 --- !u!1 &769377216
 GameObject:
   m_ObjectHideFlags: 0
@@ -16267,6 +16309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canInteract: 1
   canZoom: 1
+  useFootsteps: 1
   interactKey: 323
   zoomKey: 324
   walkSpeed: 2
@@ -16282,6 +16325,38 @@ MonoBehaviour:
     m_Bits: 1048576
   timeToZoom: 0.3
   ZoomFov: 30
+  baseStepSpeed: 0.5
+  footstepAudioSource: {fileID: 1614962370}
+  woodClips:
+  - {fileID: 8300000, guid: 8522488a4561def4e82c471677fba565, type: 3}
+  - {fileID: 8300000, guid: 641c7006d090451419c7bea0835e94e7, type: 3}
+  - {fileID: 8300000, guid: adc09476a151c9147b12f3d9228b4598, type: 3}
+  - {fileID: 8300000, guid: 25a3c97b5655f3f4a9eeaff0ae7e4cfa, type: 3}
+  - {fileID: 8300000, guid: e26d53e3e806c2746a3306aa1134e412, type: 3}
+  - {fileID: 8300000, guid: 60070a321882d75429fb9e8c9c3bee2e, type: 3}
+  - {fileID: 8300000, guid: c497475f50141ca488139495bbd8977c, type: 3}
+  - {fileID: 8300000, guid: 8e2b2556f3d41ff40afeac21b0189146, type: 3}
+  - {fileID: 8300000, guid: 5bf9d66eedd27644082be3274c872d73, type: 3}
+  - {fileID: 8300000, guid: 12f4c3bfca4674249bfb2da21e7251dd, type: 3}
+  carpetClips:
+  - {fileID: 8300000, guid: b31b7ef865169df4eab90de7e964a291, type: 3}
+  - {fileID: 8300000, guid: 2f23fe03674cdfd49b37d43312c74741, type: 3}
+  - {fileID: 8300000, guid: ad6fdcb9a4cdb594994b8b644f46d122, type: 3}
+  - {fileID: 8300000, guid: 99054cfeddde99341a4520e9c9fac754, type: 3}
+  - {fileID: 8300000, guid: 9b4e73f5280bfcd4fade339a09877a6c, type: 3}
+  - {fileID: 8300000, guid: e829aeb7b9393c2488e9f34ee90b62d5, type: 3}
+  - {fileID: 8300000, guid: f8a2b264126493849817d1b21ddccc88, type: 3}
+  concreteClips:
+  - {fileID: 8300000, guid: 410327abd39eb504e884cc104ae10fd3, type: 3}
+  - {fileID: 8300000, guid: f47e387a360c7c84993de0a992291cb6, type: 3}
+  - {fileID: 8300000, guid: 648fe7eec8253ee4bb0d60808d210a1e, type: 3}
+  - {fileID: 8300000, guid: c7e4e2367679b674c9353b654001a86c, type: 3}
+  - {fileID: 8300000, guid: 4dc27f93e853bf9408ac343fd8101395, type: 3}
+  - {fileID: 8300000, guid: 182c5c397cc95634ba6777956e08491f, type: 3}
+  - {fileID: 8300000, guid: 72f2e9b8f51f72b4bb3233e95cf0731e, type: 3}
+  - {fileID: 8300000, guid: 122b889917f2a524d9fd365ddb00cb16, type: 3}
+  - {fileID: 8300000, guid: 7a3b20c995a654a4581cd7ea50923cd5, type: 3}
+  - {fileID: 8300000, guid: cce9f2408d196b4488c87871fe5ebe48, type: 3}
 --- !u!143 &1614962368
 CharacterController:
   m_ObjectHideFlags: 0
@@ -17879,6 +17954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: matress_LP
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 08c02970a2ed2634eaa5b434d0a88250,
+        type: 3}
+      propertyPath: m_TagString
+      value: Carpet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22263,6 +22343,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7ac5d9ffaf81cd34db005048af2a7a22, type: 2}
+    - target: {fileID: -8751858900224265188, guid: b4221ebc41699544f9efb55de9ea0a65,
+        type: 3}
+      propertyPath: m_TagString
+      value: Concrete
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4221ebc41699544f9efb55de9ea0a65,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22353,6 +22438,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 29de27c52a45a4b4e86b0e0acf13453f, type: 2}
+    - target: {fileID: -7693201501107139617, guid: b4221ebc41699544f9efb55de9ea0a65,
+        type: 3}
+      propertyPath: m_TagString
+      value: Carpet
+      objectReference: {fileID: 0}
     - target: {fileID: -7493596028755563170, guid: b4221ebc41699544f9efb55de9ea0a65,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22558,6 +22648,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7ac5d9ffaf81cd34db005048af2a7a22, type: 2}
+    - target: {fileID: -2469149646048093789, guid: b4221ebc41699544f9efb55de9ea0a65,
+        type: 3}
+      propertyPath: m_TagString
+      value: Carpet
+      objectReference: {fileID: 0}
     - target: {fileID: -2456054565057575646, guid: b4221ebc41699544f9efb55de9ea0a65,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22628,6 +22723,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 402954e74c37f3d4f8a4aab4bac71fea, type: 2}
+    - target: {fileID: -1857309847194865932, guid: b4221ebc41699544f9efb55de9ea0a65,
+        type: 3}
+      propertyPath: m_TagString
+      value: Carpet
+      objectReference: {fileID: 0}
     - target: {fileID: -1823322365421230674, guid: b4221ebc41699544f9efb55de9ea0a65,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -22733,6 +22833,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 402954e74c37f3d4f8a4aab4bac71fea, type: 2}
+    - target: {fileID: -1063203228461421988, guid: b4221ebc41699544f9efb55de9ea0a65,
+        type: 3}
+      propertyPath: m_TagString
+      value: Carpet
+      objectReference: {fileID: 0}
     - target: {fileID: -804731622281664130, guid: b4221ebc41699544f9efb55de9ea0a65,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -22933,6 +23038,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d1939ef5cb636d642a6765ead6c58f91, type: 2}
+    - target: {fileID: 3836832282657469200, guid: b4221ebc41699544f9efb55de9ea0a65,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
     - target: {fileID: 3894428525530371196, guid: b4221ebc41699544f9efb55de9ea0a65,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -23123,6 +23233,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6679628991948217443, guid: b4221ebc41699544f9efb55de9ea0a65,
+        type: 3}
+      propertyPath: m_TagString
+      value: Concrete
+      objectReference: {fileID: 0}
     - target: {fileID: 6947464325843983966, guid: b4221ebc41699544f9efb55de9ea0a65,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -23147,6 +23262,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192985138791348758, guid: b4221ebc41699544f9efb55de9ea0a65,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: 7339356831882890532, guid: b4221ebc41699544f9efb55de9ea0a65,
         type: 3}
@@ -23500,6 +23620,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1475818196}
+    - targetCorrespondingSourceObject: {fileID: -1063203228461421988, guid: b4221ebc41699544f9efb55de9ea0a65,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2146488314}
+    - targetCorrespondingSourceObject: {fileID: -1857309847194865932, guid: b4221ebc41699544f9efb55de9ea0a65,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2146488313}
     - targetCorrespondingSourceObject: {fileID: -6474134037451360288, guid: b4221ebc41699544f9efb55de9ea0a65,
         type: 3}
       insertIndex: -1
@@ -23541,6 +23669,62 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1816785837}
   m_SourcePrefab: {fileID: 100100000, guid: b4221ebc41699544f9efb55de9ea0a65, type: 3}
+--- !u!1 &2146488311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1857309847194865932, guid: b4221ebc41699544f9efb55de9ea0a65,
+    type: 3}
+  m_PrefabInstance: {fileID: 2146488310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2146488312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1063203228461421988, guid: b4221ebc41699544f9efb55de9ea0a65,
+    type: 3}
+  m_PrefabInstance: {fileID: 2146488310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2146488313
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146488311}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6349497404779363362, guid: b4221ebc41699544f9efb55de9ea0a65, type: 3}
+--- !u!64 &2146488314
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146488312}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8302102485596996044, guid: b4221ebc41699544f9efb55de9ea0a65, type: 3}
 --- !u!23 &219988445221239899
 MeshRenderer:
   m_ObjectHideFlags: 0
